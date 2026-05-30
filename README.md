@@ -1,5 +1,5 @@
 # Research Council
-
+<img width="1122" height="1402" alt="Research council: Six minds, one idea" src="https://github.com/user-attachments/assets/d024b3a7-c309-4a8a-8daa-dfd1114d9d99" />
 A Claude skill that pressure-tests one research artifact through a **critic-weighted
 panel**: Skeptic/Reviewer-2, Methodologist, Theorist, Taste/PI, Naive-reader,
 Feasibility. Then synthesizes where they converge, where they clash, what they
@@ -46,6 +46,8 @@ running the computation/experiment.
 | Design | Skeptic, Theorist | Methodologist·comp, Feasibility·compute | Methodologist·wet, Feasibility·bench |
 | Interpret | Skeptic, Theorist | Methodologist·comp | Methodologist·wet |
 | Write / frame | Skeptic (Reviewer-2), Naive-reader | Methodologist·comp | Methodologist·wet |
+
+<img width="1002" height="731" alt="Screenshot from 2026-05-30 02-04-15" src="https://github.com/user-attachments/assets/f9d62897-1d32-4f62-a7e8-2b34cb302090" />
 
 **Mixed** mode runs the computational Methodologist and the wet-lab Feasibility
 seat together, and the Chair reconciles *prediction validity* against
