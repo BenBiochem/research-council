@@ -6,7 +6,10 @@
   "plugins": [
     {
       "name": "research-council",
-      "source": "./",
+      "source": {
+        "source": "github",
+        "repo": "BenBiochem/research-council"
+      },
       "description": "Critic-weighted research council that pressure-tests a research artifact through specialist lenses; auto-routes computational vs wet-lab and runs locally with no data egress.",
       "category": "development"
     }
