@@ -1,7 +1,7 @@
 {
   "name": "research-council",
   "version": "2026.5.30",
-  "description": "Convene a critic-weighted research council inside Claude (Skeptic/Reviewer-2, Methodologist, Theorist, Taste, Naive-reader, Feasibility) that pressure-tests a research decision, benchmark, experiment, result, or paper claim and synthesizes a verdict. Auto-detects computational vs wet-lab work and routes accordingly. No external APIs, no data egress.",
+  "description": "Convene a critic-weighted research council inside Claude (Skeptic/Reviewer-2, Methodologist, Theorist, Taste, Naive-reader, Feasibility) that pressure-tests a research decision, benchmark, experiment, result, or paper claim and synthesizes a verdict. Auto-detects computational vs wet-lab work and routes accordingly.",
   "author": {
     "name": "Benjamin E. Peterson"
   },
