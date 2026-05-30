@@ -81,7 +81,7 @@ calls (doubles cost; off by default).
 
 The skill imposes **no** method preferences of its own. If your project has
 standing constraints (techniques to avoid or prefer), declare them and the
-Feasibility seat will enforce them and flag violations — otherwise it applies
+Feasibility seat will enforce them and flag violations, otherwise it applies
 neutral feasibility judgment. Put a line in your project `CLAUDE.md` or your
 request:
 
