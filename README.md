@@ -1,8 +1,8 @@
 # Research Council
 
 A Claude skill that pressure-tests one research artifact through a **critic-weighted
-panel** — Skeptic/Reviewer-2, Methodologist, Theorist, Taste/PI, Naive-reader,
-Feasibility — then synthesizes where they converge, where they clash, what they
+panel**: Skeptic/Reviewer-2, Methodologist, Theorist, Taste/PI, Naive-reader,
+Feasibility. Then synthesizes where they converge, where they clash, what they
 all missed, and the one thing to do next.
 
 Built for **research, computation, and paper-writing**. Adapted from Andrej
