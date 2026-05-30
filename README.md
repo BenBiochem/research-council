@@ -1,7 +1,7 @@
 # Research Council
 <img width="1122" height="1402" alt="Research council: Six minds, one idea" src="https://github.com/user-attachments/assets/d024b3a7-c309-4a8a-8daa-dfd1114d9d99" />
-A Claude skill that pressure-tests one research artifact through a **critic-weighted
-panel**: Skeptic/Reviewer-2, Methodologist, Theorist, Taste/PI, Naive-reader,
+A Claude skill that pressure-tests one research artifact through a critic-weighted
+panel: Skeptic/Reviewer-2, Methodologist, Theorist, Taste/PI, Naive-reader,
 Feasibility. Then synthesizes where they converge, where they clash, what they
 all missed, and the one thing to do next.
 
