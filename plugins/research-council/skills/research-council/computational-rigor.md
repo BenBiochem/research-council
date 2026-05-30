@@ -2,7 +2,7 @@
 
 Loaded by the orchestrator when **Mode = computational** (or mixed). Feeds the
 **Methodologist·comp** and **Feasibility·compute** seats. The orchestrator does
-not dump this whole file into a sub-agent — it picks the 2–4 points most
+not dump this whole file into a sub-agent, it picks the 2–4 points most
 relevant to the specific artifact and inlines them into the seat prompt.
 
 These are general failure modes for computational science / modeling /
@@ -10,18 +10,18 @@ benchmarking. The examples are illustrative, not domain-specific.
 
 ---
 
-## Methodologist·comp — inference validity (are you fooling yourself?)
+## Methodologist·comp: inference validity (are you fooling yourself?)
 
 1. **Metric ≠ metric.** Ranking metrics (R, ρ, AUC), calibration metrics (MAE,
    RMSE), and direction metrics (sign/class accuracy) measure different things;
    a method can win one and lose another. Report the metric that matches the
-   *claim*, not the most flattering one. Watch the brutal sub-case — e.g.
+   *claim*, not the most flattering one. Watch the brutal sub-case, e.g.
    accuracy on the borderline/near-threshold examples is often close to chance
    even when the headline correlation looks strong. Watch pooled-vs-grouped
    correlation (Simpson's paradox): a strong pooled number can hide weak
    within-group ranking.
 
-2. **Baseline fairness — apples to apples.** A comparison is valid only if both
+2. **Baseline fairness: apples to apples.** A comparison is valid only if both
    methods see the **same inputs, same preprocessing, same identifiers, and the
    same target quantity**. Comparing method-A computed on one representation to
    method-B computed on a different representation is two measurements, not a
@@ -35,20 +35,20 @@ benchmarking. The examples are illustrative, not domain-specific.
 
 4. **Cherry-picking / generalization.** A headline from a *favorable* case is
    not the method's number. "0.9 on the easy system" vs "0.7 averaged over the
-   full set" — the honest figure is the **distribution across all cases**, not
+   full set", the honest figure is the **distribution across all cases**, not
    the best one. If a method only reaches target on a subset, say which subset
    and why.
 
 5. **N, seeds, determinism, normalization.** Stochastic procedures need
    multiple seeds; report mean ± sd, not one run. Know which steps are
    deterministic (you cannot estimate variance from a deterministic step). Watch
-   normalization ambiguity — per-unit vs per-aggregate, total ÷ N vs a local
-   window — it can move a result by an integer factor and silently make or break
+   normalization ambiguity (per-unit vs per-aggregate, total ÷ N vs a local
+   window); it can move a result by an integer factor and silently make or break
    a claim.
 
 6. **Canonical vs re-implementation.** A re-implementation can manufacture
-   artifacts that look like findings — a spurious large-magnitude outlier, a
-   depressed correlation — that vanish under the canonical/published
+   artifacts that look like findings (a spurious large-magnitude outlier, a
+   depressed correlation) that vanish under the canonical/published
    implementation. Pin the version, prefer the reference implementation, and
    flag any number whose provenance is a re-impl.
 
@@ -61,15 +61,15 @@ benchmarking. The examples are illustrative, not domain-specific.
 8. **The right quantity.** What is *actually* computed, and does it match the
    claim? Two quantities that look interchangeable often are not (e.g. an
    equilibrium property vs a rate; a global property vs a local one). A perfect
-   number for the wrong quantity is still wrong — and is the easiest mistake to
+   number for the wrong quantity is still wrong, and is the easiest mistake to
    miss because the code "works."
 
 ---
 
-## Feasibility·compute — can it run, and what is the fastest clean version?
+## Feasibility·compute: can it run, and what is the fastest clean version?
 
 1. **Convergence & protocol soundness.** Will the optimization/sampling
-   actually converge? Is the procedure doing what you think — e.g. a global
+   actually converge? Is the procedure doing what you think, e.g. a global
    refinement when you wanted a local one; independent vs paired handling of two
    states being compared.
 
