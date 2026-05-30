@@ -11,7 +11,7 @@ deliberate departures:
 
 - **Critic-weighted, not idea-weighted.** In rigorous work the bottleneck is
   *selecting and killing* ideas, not generating them. The panel is built from
-  the lenses that override an assistant's default agreeableness — where a forced
+  the lenses that override an assistant's default agreeableness, where a forced
   perspective genuinely changes the output. No "growth/upside" seats.
 - **Computational vs wet-lab aware.** The skill detects whether the work is
   *in silico* or *at the bench* (or both) and routes the Methodologist and
@@ -31,7 +31,7 @@ Use it on decisions where being wrong is expensive:
 
 - "Is this benchmark a fair comparison, or am I fooling myself?"
 - "What will Reviewer 2 attack in this claim / figure / paragraph?"
-- "Is this experiment sound — controls, replicates, confounds?"
+- "Is this experiment sound controls, replicates, confounds?"
 - "Should I pursue X or Y?" / "Which approach?"
 - "My model predicts X, is it worth validating at the bench, and how?" (mixed)
 
