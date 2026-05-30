@@ -47,11 +47,12 @@ running the computation/experiment.
 | Interpret | Skeptic, Theorist | Methodologist·comp | Methodologist·wet |
 | Write / frame | Skeptic (Reviewer-2), Naive-reader | Methodologist·comp | Methodologist·wet |
 
-<img width="1002" height="731" alt="Screenshot from 2026-05-30 02-04-15" src="https://github.com/user-attachments/assets/f9d62897-1d32-4f62-a7e8-2b34cb302090" />
-
 **Mixed** mode runs the computational Methodologist and the wet-lab Feasibility
 seat together, and the Chair reconciles *prediction validity* against
 *experimental feasibility*. Panels stay lean (3–4 seats); synthesis is done once.
+
+## Graphical Explanation
+<img width="1002" height="731" alt="Screenshot from 2026-05-30 02-04-15" src="https://github.com/user-attachments/assets/f9d62897-1d32-4f62-a7e8-2b34cb302090" />
 
 ## Install
 
