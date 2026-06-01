@@ -25,6 +25,11 @@ deliberate departures:
 > *independent-knowledge triangulation*, the verdict leans on the reasoning
 > surfaced, not on seats agreeing.
 
+**Also included:** `abstract-research`, a companion mode that keeps the council
+from getting stuck in one framing by putting *off-graph* alternatives on the
+table first (a different paradigm or tool entirely, not just a new angle). See
+[Advanced: abstract-research](#advanced-abstract-research) at the bottom.
+
 ## What it's for
 
 Use it on decisions where being wrong is expensive:
