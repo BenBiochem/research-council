@@ -59,14 +59,15 @@ seat together, and the Chair reconciles *prediction validity* against
 **As a plugin**: point your Claude Code plugin config at this repo, or clone it
 into your plugins directory.
 
-**Manually**: copy the skill folder into your personal skills directory:
+**Manually**: copy the skill folders into your personal skills directory:
 
 ```bash
-cp -r skills/research-council ~/.claude/skills/
+cp -r plugins/research-council/skills/* ~/.claude/skills/
 ```
 
-The skill is self-contained: `SKILL.md` plus two mode checklists
-(`computational-rigor.md`, `wetlab-rigor.md`) loaded conditionally.
+This installs both skills: `research-council` (the council itself: a `SKILL.md`
+plus two mode checklists loaded conditionally) and `abstract-research` (the
+divergence front-end described below).
 
 ## Usage
 
@@ -92,15 +93,44 @@ request:
 CONSTRAINTS: avoid <technique A>, <technique B>; prefer <technique C>
 ```
 
+## Advanced: `abstract-research`
+
+`research-council` has one structural blind spot: every seat gets a single framed
+question, so the panel reasons inside one framing. A critic panel pointed at "how
+do we improve X" also tends to only suggest *local* moves; it rarely says "stop
+doing X this way at all."
+
+`abstract-research` is a front-end that fixes both. Before the council
+deliberates, it puts a divergent spread of candidate directions on the table in
+two tiers:
+
+- **On-graph reframes:** orthogonal angles on the current problem (literal,
+  reframe, inversion, first-principles, analogy).
+- **Off-graph moves:** a completely different paradigm, tool, or protocol for the
+  *same goal*, abandoning the current approach rather than improving it. "An
+  angle not even on the same graph." These may propose a tool you do not have yet
+  and name what to search for to find it.
+
+The council then critiques across the whole spread, so it cannot get stuck
+improving one approach when a better one lies off the current graph. The verdict
+weighs the strongest incremental move against the strongest paradigm shift and
+makes a call.
+
+Trigger it with "abstract-research this", "what is our next move", or "is there a
+completely different approach". Same no-egress guarantee as the council: it
+*suggests* what to search for, it does not search. Off-graph leads that need a
+new tool come out as explicit research questions you can optionally pursue with a
+deep-research tool (which does involve web egress).
+
 ## Credit
 
 Created by **Benjamin E. Peterson**. If you build on this, please keep the credit
-(and retain the MIT notice) — see the license below.
+(and retain the MIT notice); see the license below.
 
 Methodology adapted from Andrej Karpathy's
 [LLM Council](https://github.com/karpathy/llm-council).
 
 ## License
 
-MIT © 2026 Benjamin E. Peterson — see [LICENSE](LICENSE). The MIT notice must be
+MIT © 2026 Benjamin E. Peterson. See [LICENSE](LICENSE). The MIT notice must be
 retained in copies and derivative works, which preserves attribution.
