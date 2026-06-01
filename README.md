@@ -108,7 +108,7 @@ doing X this way at all."
 `abstract-research` is a front-end that fixes both. Before the council
 deliberates, it puts a divergent spread of candidate directions on the table in
 two tiers:
-
+<img width="1450" height="1085" alt="Abstract-research and cosmic thoughts" src="https://github.com/user-attachments/assets/68db6247-7b00-40ad-ab42-f3eda0d49580" />
 - **On-graph reframes:** orthogonal angles on the current problem (literal,
   reframe, inversion, first-principles, analogy).
 - **Off-graph moves:** a completely different paradigm, tool, or protocol for the
