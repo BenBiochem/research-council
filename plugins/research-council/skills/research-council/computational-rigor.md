@@ -15,11 +15,10 @@ benchmarking. The examples are illustrative, not domain-specific.
 1. **Metric ≠ metric.** Ranking metrics (R, ρ, AUC), calibration metrics (MAE,
    RMSE), and direction metrics (sign/class accuracy) measure different things;
    a method can win one and lose another. Report the metric that matches the
-   *claim*, not the most flattering one. Watch the brutal sub-case, e.g.
-   accuracy on the borderline/near-threshold examples is often close to chance
-   even when the headline correlation looks strong. Watch pooled-vs-grouped
-   correlation (Simpson's paradox): a strong pooled number can hide weak
-   within-group ranking.
+   *claim*, not the most flattering one. Watch the hard sub-case: accuracy on
+   the borderline/near-threshold examples is often close to chance even when the
+   headline number looks strong. Watch pooled-vs-grouped correlation (Simpson's
+   paradox): a strong pooled number can hide weak within-group ranking.
 
 2. **Baseline fairness: apples to apples.** A comparison is valid only if both
    methods see the **same inputs, same preprocessing, same identifiers, and the
@@ -30,7 +29,8 @@ benchmarking. The examples are illustrative, not domain-specific.
 
 3. **Data leakage / contamination.** Is the test case (or a near-duplicate) in
    the model's *training* set? Learned predictors can have seen your target.
-   Cross-validation that splits items but not near-duplicates/homologs leaks.
+   Cross-validation that splits items but not near-duplicates or related items
+   leaks.
    Any tuning that touched the test set invalidates the number.
 
 4. **Cherry-picking / generalization.** A headline from a *favorable* case is
@@ -42,18 +42,18 @@ benchmarking. The examples are illustrative, not domain-specific.
 5. **N, seeds, determinism, normalization.** Stochastic procedures need
    multiple seeds; report mean ± sd, not one run. Know which steps are
    deterministic (you cannot estimate variance from a deterministic step). Watch
-   normalization ambiguity (per-unit vs per-aggregate, total ÷ N vs a local
-   window); it can move a result by an integer factor and silently make or break
-   a claim.
+   normalization ambiguity (per-unit vs per-aggregate, a global vs a local
+   denominator); it can move a result by an integer factor and silently make or
+   break a claim.
 
-6. **Canonical vs re-implementation.** A re-implementation can manufacture
+6. **Reference vs re-implementation.** A re-implementation can manufacture
    artifacts that look like findings (a spurious large-magnitude outlier, a
-   depressed correlation) that vanish under the canonical/published
+   depressed correlation) that vanish under the published reference
    implementation. Pin the version, prefer the reference implementation, and
    flag any number whose provenance is a re-impl.
 
 7. **Indexing & identifier bugs.** Off-by-one (0-based vs 1-based) silently
-   corrupts everything downstream and can halve a correlation without erroring.
+   corrupts everything downstream without erroring.
    When multiple numbering/identifier conventions exist (source format vs the
    tool's internal indexing), map them explicitly rather than assuming
    alignment. Verify one case by hand.
@@ -63,6 +63,13 @@ benchmarking. The examples are illustrative, not domain-specific.
    equilibrium property vs a rate; a global property vs a local one). A perfect
    number for the wrong quantity is still wrong, and is the easiest mistake to
    miss because the code "works."
+
+9. **Null model and uncertainty.** A score means little without the number a
+   trivial method or a shuffled-label run would get, and without an interval.
+   Ask for a permutation or random baseline, a confidence interval or bootstrap
+   over the units that matter (not over rows that are not independent), and a
+   correction when many comparisons, thresholds, or variants were tried and only
+   the best is reported.
 
 ---
 
@@ -87,6 +94,6 @@ benchmarking. The examples are illustrative, not domain-specific.
    the question. Design the cheap decisive experiment first.
 
 5. **Silent-failure hygiene.** Empty/failed outputs scored as 0 instead of
-   dropped; unit mix-ups (e.g. mismatched energy units, or an inverted sign
+   dropped; unit mix-ups (mismatched units, or an inverted sign
    convention); truncated files read as complete. These pass without erroring
    and poison the aggregate. Spot-check raw outputs, not just the summary.

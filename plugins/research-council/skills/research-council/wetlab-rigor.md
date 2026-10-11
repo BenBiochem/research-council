@@ -5,8 +5,8 @@ Loaded by the orchestrator when **Mode = wet-lab** (or mixed). Feeds the
 the 2–4 points most relevant to the specific design and inlines them into the
 seat prompt, it does not dump the whole file.
 
-General bench-experiment failure modes for the life sciences. Examples are
-illustrative, not domain-specific.
+General bench-experiment failure modes. Examples are illustrative, not
+domain-specific.
 
 ---
 
@@ -31,8 +31,8 @@ illustrative, not domain-specific.
 4. **Batch effects & confounds.** Preparation batch, day, operator, plate
    position, instrument drift, all of which vary. Block or randomize them. Beware
    effects that *masquerade* as your signal: differences in input amount,
-   maturation/equilibration lag, a tag or carrier altering behavior, or an
-   abundance difference read as an activity difference.
+   equilibration lag, a label or carrier altering behavior, or an abundance
+   difference read as an activity difference.
 
 5. **Assay validation & dynamic range.** Is the readout linear over the range
    you use? Is it reporting what you think? Many proxy readouts report a
@@ -43,6 +43,11 @@ illustrative, not domain-specific.
 6. **Readout artifacts.** Background signal, interference at high concentration,
    decay/bleaching over time, edge effects. Separate "more of the thing" from
    "more active thing."
+
+7. **Blinding, randomization, and exclusion rules.** Were samples blinded or
+   randomized to position and run order? Were outlier and exclusion criteria
+   fixed before the data came in? Post hoc exclusions and unblinded scoring can
+   manufacture an effect from noise.
 
 ---
 
@@ -71,12 +76,10 @@ illustrative, not domain-specific.
    know which caused the effect). Prefer a constant, well-characterized readout
    across conditions.
 
-4. **Architecture confounds.** When comparing construct/format architectures,
-   each carries its own confound (stoichiometry, coupling, processing). Hold the
-   reporter/readout constant across conditions so the architecture is the only
-   variable.
+4. **Format confounds.** When comparing variants or formats, each can carry its
+   own confound (stoichiometry, coupling, processing). Hold the readout constant
+   across conditions so the variant is the only variable.
 
 5. **Throughput & cost.** Match the readout's throughput to the number of
-   conditions; a plate-scale readout beats a low-throughput gel/blot when many
-   conditions or replicates are needed; reserve low-throughput confirmation for
-   a few decisive samples.
+   conditions and replicates, and say what the chosen readout trades away.
+   Reserve slower, lower-throughput confirmation for a few decisive samples.

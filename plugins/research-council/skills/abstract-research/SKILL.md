@@ -8,8 +8,8 @@ description: >-
   protocol for the same goal, including ones that require finding a tool you do
   not have yet). The council then critiques across the whole spread, so it
   cannot get stuck improving one approach when a better approach lies off the
-  current graph. Runs entirely in Claude via sub-agents; it SUGGESTS what to
-  search for but does not search (no egress). Triggers: "abstract-research this",
+  current graph. Runs in Claude via sub-agents; it SUGGESTS what to search for
+  but does not search (no egress). Costs roughly twice a plain council. Triggers: "abstract-research this",
   "what is our next move", "is there a completely different approach", "are we
   stuck in one way of thinking", "think bigger than improving this". Do NOT use
   for a straightforward critique of one artifact (that is plain research-council)
@@ -46,19 +46,22 @@ doing it this way at all*.
 
 Do research-council Step 0 (detect MODE: computational / wet-lab / mixed) and
 Step 1 (ground the question from `CLAUDE.md` / notes / the artifact). Reframe
-into one neutral question, the same way the council does. Announce the mode.
+into one neutral question, the same way the council does (user's verbatim
+request, neutral framing, artifact or file paths), and print it before spawning.
+Announce the mode.
 
 ---
 
 ## Step 2: Divergence (the new part, two tiers)
 
 Generate a spread of candidate directions for the question. Spawn these as
-parallel sub-agents (`subagent_type: "general-purpose"`, one message), each
-producing ONE short take (about 120 to 200 words: the direction plus its
-tentative answer). Aim for 5 to 7 takes total across the two tiers. They must be
-genuinely different, not variations on one.
+parallel sub-agents (one message), each producing ONE short take (about 120 to
+200 words: the direction plus its tentative answer). Use 4 takes: 2 per tier.
+Four keeps the total near 8 or 9 agents with the council panel; more takes crowd
+out the critique and become a new anchor. They must be genuinely different, not
+variations on one.
 
-### Tier A, on-graph reframes (3 to 4)
+### Tier A, on-graph reframes (2)
 Different angles *within* the current problem space. Same goal, same general
 approach, fresh framing. Use lenses such as:
 - the literal, object-level answer,
@@ -67,7 +70,7 @@ approach, fresh framing. Use lenses such as:
 - a first-principles rebuild,
 - an analogy transferred from another part of the same field.
 
-### Tier B, off-graph moves (2 to 3): the point of this skill
+### Tier B, off-graph moves (2): the point of this skill
 A completely different paradigm, tool, or protocol that achieves the **same
 goal** while abandoning the current approach. Not an improvement of what exists,
 a replacement of the whole method. Each off-graph agent is told explicitly:
@@ -90,7 +93,8 @@ Tag each off-graph move with one of:
 
 Hand the full set of takes (Tier A + Tier B) to the research-council panel as
 "candidate directions on the table." Select and spawn the seats exactly as
-research-council Step 2 and Step 4 do for the detected PHASE and MODE, but the
+research-council Step 2 and Step 4 do (including the `council-seat` agent, the
+anchored-findings rule, and the quorum rule) for the detected PHASE and MODE, but the
 framed question now carries the spread, and each seat works *across* it:
 
 - **Skeptic**: which directions are dead ends? Which off-graph move is a mirage
@@ -100,8 +104,10 @@ framed question now carries the spread, and each seat works *across* it:
 - **Methodologist**: for the directions that make a claim, whose evidence or
   validity would actually hold? (load the mode checklist as usual)
 - **Feasibility**: reality-check the off-graph moves: for a **[needs-search]**
-  move, is the proposed tool plausibly real and findable, and is the switching
-  cost worth it? This is where "go search for it" gets grounded.
+  move, what would the tool have to do, what would you search for, and is the
+  switching cost worth it? Existence is unverified: the model that proposed the
+  tool is judging it from memory, so mark every such tool `unverified` until a
+  real search confirms it.
 - **Taste / PI**: would a paradigm shift matter more than incremental
   improvement here, or is the boring local move the honest best next step?
 
@@ -114,13 +120,13 @@ sections. Output in chat, markdown, no files unless asked:
 
 ```
 ## Abstract Research: {short topic}
-**Mode:** {computational | wet-lab | mixed} · **Panel:** {seats that ran}
+**Mode:** {computational | wet-lab | mixed} · **Panel:** {seats that ran; failed: none | names}
 
 ### The spread
 {one line per surviving take, Tier A and Tier B, with [in-reach]/[needs-search] tags on off-graph moves}
 
-### Where the council converges / clashes
-{high-confidence points; genuine disagreements, both sides}
+### Shared findings / clashes
+{findings with their evidence quotes (agreement is correlated, one model); genuine disagreements, both sides}
 
 ### Incremental vs paradigm shift
 {the strongest on-graph next move VS the strongest off-graph move, side by side, and the honest tradeoff between them}
@@ -132,7 +138,7 @@ sections. Output in chat, markdown, no files unless asked:
 {ONE concrete next step}
 
 ### Off-graph leads to research (optional, involves egress)
-{the [needs-search] directions worth chasing, written as explicit search questions you could hand to /hyperresearch. Empty if none survived.}
+{the [needs-search] directions worth chasing, written as explicit search questions you could hand to /hyperresearch. Mark each tool `unverified`. Empty if none survived.}
 ```
 
 For **mixed** mode, "The call" must still reconcile prediction validity against
@@ -151,5 +157,8 @@ balance.
   rather than manufacture one.
 - Do not perform external searches here. Surface **[needs-search]** leads as
   questions; let the user decide whether to spend egress on them.
+- Cost: the spread adds 4 agents on top of a 3 to 5 seat panel, so a run is
+  about 2x a plain council. Use plain research-council unless the question is
+  whether to do it this way at all.
 - Everything else follows research-council: lean panel, one synthesis pass, no
-  egress, do not run this on trivial questions with one right answer.
+  third-party egress, do not run this on trivial questions with one right answer.
