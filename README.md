@@ -16,9 +16,9 @@ deliberate departures:
 - **Computational vs wet-lab aware.** The skill detects whether the work is
   *in silico* or *at the bench* (or both) and routes the Methodologist and
   Feasibility seats to the matching rigor checklist. This is the core feature.
-- **No egress.** Every seat is a Claude sub-agent. Nothing leaves your machine,
-  no third-party model sees the artifact. Safe on unpublished data, manuscripts,
-  and designs.
+- **No third-party egress.** Every seat is a Claude sub-agent. The artifact goes
+  only to Claude, never to another model or API, and the seats cannot browse the
+  web. Safe on unpublished data, manuscripts, and designs.
 
 > One-model honesty: the seats are Claude prompted several ways, not several
 > independent models. That is real value for *critique* and weaker for
@@ -50,7 +50,7 @@ running the computation/experiment.
 | Pursue / prioritize | Taste, Theorist, Skeptic | (Methodologist) | (Feasibility) |
 | Design | Skeptic, Theorist | Methodologist·comp, Feasibility·compute | Methodologist·wet, Feasibility·bench |
 | Interpret | Skeptic, Theorist | Methodologist·comp | Methodologist·wet |
-| Write / frame | Skeptic (Reviewer-2), Naive-reader | Methodologist·comp | Methodologist·wet |
+| Write / frame | Skeptic (Reviewer-2), Naive-reader, Taste | Methodologist·comp | Methodologist·wet |
 
 **Mixed** mode runs the computational Methodologist and the wet-lab Feasibility
 seat together, and the Chair reconciles *prediction validity* against
@@ -61,8 +61,12 @@ seat together, and the Chair reconciles *prediction validity* against
 
 ## Install
 
-**As a plugin**: point your Claude Code plugin config at this repo, or clone it
-into your plugins directory.
+**As a plugin** (Claude Code):
+
+```
+/plugin marketplace add BenBiochem/research-council
+/plugin install research-council@benbiochem
+```
 
 **Manually**: copy the skill folders into your personal skills directory:
 
@@ -76,7 +80,9 @@ divergence front-end described below).
 
 ## Usage
 
-In any Claude conversation, trigger it with:
+The council runs its seats as sub-agents, so it works best in Claude Code. Where
+sub-agents are unavailable it runs the seats one at a time and says so in the
+output. Trigger it with:
 
 - "council this …"
 - "reviewer 2 this …"
