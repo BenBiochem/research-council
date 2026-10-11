@@ -17,5 +17,5 @@ Thumbs.db
 .vscode/
 
 # Local council output, if the skill is ever run inside this repo
-council-*.md
+/council-*.md
 .claude/council-cache/
